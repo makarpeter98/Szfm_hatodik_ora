@@ -20,12 +20,14 @@ public class SpringJavaFxApplication {
         Iterable<Person> persons = personRepository.findAll();
 
         for (Person p : persons) {
-            System.out.println(p);
+            System.out.println("Person: " + p);
         }
+
     }
 
     public void addTestPerson(){
 
         personRepository.save(Person.builder().name("Jóska Pista").age(40).build());
+        System.out.println("Joska Pista hozzaadva!");
     }
 }
