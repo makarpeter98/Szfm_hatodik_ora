@@ -15,6 +15,7 @@ import org.springframework.test.annotation.Rollback;
 class SpringJavaFxApplicationTests {
     @BeforeAll
     static void before(){
+        System.out.println("SZFM Hetedik ora teszt kod!");
         System.out.println("before");
     }
 
