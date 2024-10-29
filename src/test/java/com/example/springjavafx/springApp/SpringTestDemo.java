@@ -41,11 +41,42 @@ public class SpringTestDemo {
         assertThat(person.get().getAge()).isEqualTo(99);
     }
 
-//    @Test
-//    @Rollback
-//
-//    public void testUpdate()
-//    {
-//        personRepository.save(TestAgnes)
-//    }
+    @Test
+    @Rollback
+    public void testUpdate()
+    {
+        TestAgnes.setAge(30);
+        personRepository.save(TestAgnes);
+
+        Optional<Person> person = personRepository.findById(TestAgnes.getId());
+        assertThat(person).isPresent();
+        //assertThat(person.get().getName()).isEqualTo("Elektrom Agnes");
+        assertThat(person.get().getAge()).isEqualTo(30);
+    }
+
+    @Test
+    @Rollback
+    public void testDeletePerson() {
+
+        personRepository.save(TestAntal);
+
+
+        personRepository.deleteById(TestAntal.getId());
+
+
+        Optional<Person> person = personRepository.findById(TestAntal.getId());
+        assertThat(person).isNotPresent();
+    }
+
+    @Test
+    @Rollback
+    public void testFindAllPersons() {
+
+        personRepository.save(TestAntal);
+        personRepository.save(TestAgnes);
+
+
+        Iterable<Person> persons = personRepository.findAll();
+        assertThat(persons).hasSize(2);
+    }
 }
