@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="hu.unideb.szfm.makar.spring.fx.demo.szfm_hatodik_ora.controller.PersonViewController">
+
+    <center>
+        <TableView fx:id="personTable">
+            <columns>
+                <TableColumn fx:id="idColumn" text="ID" prefWidth="50"/>
+                <TableColumn fx:id="firstNameColumn" text="Keresztnév" prefWidth="150"/>
+                <TableColumn fx:id="lastNameColumn" text="Vezetéknév" prefWidth="150"/>
+                <TableColumn fx:id="ageColumn" text="Életkor" prefWidth="80"/>
+            </columns>
+        </TableView>
+    </center>
+
+    <right>
+        <VBox spacing="10">
+            <padding>
+                <Insets top="15" right="15" bottom="15" left="15"/>
+            </padding>
+
+            <TextField fx:id="firstNameField" promptText="Keresztnév"/>
+            <TextField fx:id="lastNameField" promptText="Vezetéknév"/>
+            <TextField fx:id="ageField" promptText="Életkor"/>
+
+            <Button text="Hozzáadás" onAction="#addPerson" maxWidth="Infinity"/>
+            <Button text="Módosítás" onAction="#updatePerson" maxWidth="Infinity"/>
+            <Button text="Törlés" onAction="#deletePerson" maxWidth="Infinity"/>
+            <Button text="Mezők törlése" onAction="#clearFields" maxWidth="Infinity"/>
+        </VBox>
+    </right>
+
+    <bottom>
+        <VBox spacing="8">
+            <padding>
+                <Insets top="10" right="15" bottom="15" left="15"/>
+            </padding>
+
+            <Label text="Automatizált tesztek"/>
+
+            <Button fx:id="runTestsButton"
+                    text="Tesztek futtatása"
+                    onAction="#runTests"
+                    maxWidth="Infinity"/>
+
+            <Label fx:id="testStatusLabel" text="A tesztek még nem futottak le."/>
+
+            <TextArea fx:id="testOutputArea"
+                      editable="false"
+                      wrapText="true"
+                      prefRowCount="7"
+                      promptText="A tesztek kimenete itt jelenik meg."/>
+        </VBox>
+    </bottom>
+
+</BorderPane>
